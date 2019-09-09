@@ -1,0 +1,3 @@
+class Services::EquationSolver
+  
+end
