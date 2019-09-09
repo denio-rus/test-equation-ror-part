@@ -1,0 +1,45 @@
+.row.justify-content-center
+  .card.col-sm-8
+    .card-header.text-center
+      h1 Params of an equation
+    .card-body
+      h3 Lets solve your equation.
+
+      p 
+        | First step: choose type of your equation.  
+        =link_to 'linear', '#', class: 'btn btn-outline-primary', id: 'type-switch', remote: true
+
+      p Second step: Enter your parameters.
+
+      = form_with url: solve_equations_path, class: 'form-linear', local: true do |f|
+        strong Your equation looks like this: ax + b = 0
+         
+        .input-group
+          .input-group-prepend
+            span.input-group-text id="inputGroup-sizing-default" a:
+          = f.text_field :a_param, class: 'form-control col-sm-6'
+        .input-group
+          .input-group-prepend
+            span.input-group-text id="inputGroup-sizing-default" b:
+          = f.text_field :b_param, class: 'form-control col-sm-6'
+        br
+        = f.submit "Solve", class: 'btn btn-outline-secondary'
+
+      = form_with url: solve_equations_path, class: 'form-quadratic hide', local: true do |f|
+        strong Your equation looks like this: ax<sup>2</sup> + bx + c = 0
+        .input-group
+          .input-group-prepend
+            span.input-group-text id="inputGroup-sizing-default" a:
+          = f.text_field :a_param, class: 'form-control col-sm-6'
+        .input-group
+          .input-group-prepend
+            span.input-group-text id="inputGroup-sizing-default" b:
+          = f.text_field :b_param, class: 'form-control col-sm-6'
+        .input-group
+          .input-group-prepend
+            span.input-group-text id="inputGroup-sizing-default" c:
+          = f.text_field :c_param, class: 'form-control col-sm-6'
+        br
+        = f.submit "Solve", class: 'btn btn-outline-secondary'
+
+    

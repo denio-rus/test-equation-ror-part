@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Equations
+
+    = csrf_meta_tags 
+    = csp_meta_tag 
+
+    meta charset="utf-8"
+    meta name='viewport' content="width=device-width, initial-scale=1, shrinkto-fit=no"
+    meta name='description' content="small SEO-service with parsing of sitemap.xml and page content"
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' 
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload' 
+
+  body
+    .container
+      = yield 
+

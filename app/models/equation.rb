@@ -1,5 +1,6 @@
 class Equation
   include ActiveModel::Validations
+  include ActiveModel::Conversion
   
   attr_reader :a_param, :b_param, :c_param
   
