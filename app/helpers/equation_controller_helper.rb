@@ -1,0 +1,2 @@
+module EquationControllerHelper
+end
