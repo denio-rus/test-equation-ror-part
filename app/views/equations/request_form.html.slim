@@ -6,10 +6,10 @@
       h3 Lets solve your equation.
 
       p 
-        | First step: choose type of your equation.  
+        | First step: choose the type of your equation.  
         =link_to 'linear', '#', class: 'btn btn-outline-primary', id: 'type-switch', remote: true
 
-      p Second step: Enter your parameters.
+      p Second step: Enter parameters of the equation.
 
       = form_with model: @equation, url: solve_equations_path, method: :get, class: 'form-linear' do |f|
         strong Your equation looks like this: ax + b = 0
@@ -44,7 +44,9 @@
           = f.text_field :c_param, class: 'form-control col-sm-6 field'
         br
         = f.submit "Solve", class: 'btn btn-outline-info w-100'
-      
+    
+    .params-errors  
+      strong= render 'errors', resource: @equation
     
     h3.card-header.equation-roots.hide
 

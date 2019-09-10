@@ -8,12 +8,6 @@ document.addEventListener('turbolinks:load', function() {
   if (reset) {
       reset.addEventListener('click', clearForms)
     }
-
-  // var errors = document.querySelector('.resource-errors')
-  // if (errors) {
-  //   var resourceId = errors.dataset.resourceId;
-  //   formInlineHandler(resourceId);
-  // }
 })
 
 function formLinkHandler(event) {

@@ -8,7 +8,7 @@ class Services::EquationSolver
   end
 
   def call
-    if @equation.type == 'linear'
+    if @equation.type == :linear
       solve_linear_equation
     else
       QuadraticEquationSolver.call(@equation.a_param,
