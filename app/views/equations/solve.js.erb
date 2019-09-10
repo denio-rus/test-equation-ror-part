@@ -1,0 +1,8 @@
+$('.equation-roots').removeClass('hide')
+
+<% unless @equation.errors.any? %>
+  $('.equation-roots').html('<%= show_roots(@equation) %>');
+<% end %>
+
+$('.params-errors').html('<%= render 'errors', resource: @equation %>');
+

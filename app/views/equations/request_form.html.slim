@@ -11,39 +11,43 @@
 
       p Second step: Enter your parameters.
 
-      = form_with url: solve_equations_path, class: 'form-linear', local: true do |f|
+      = form_with model: @equation, url: solve_equations_path, method: :get, class: 'form-linear' do |f|
         strong Your equation looks like this: ax + b = 0
-         
-        .input-group
-          .input-group-prepend
-            span.input-group-text id="inputGroup-sizing-default" a:
-          = f.text_field :a_param, class: 'form-control col-sm-6'
-        .input-group
-          .input-group-prepend
-            span.input-group-text id="inputGroup-sizing-default" b:
-          = f.text_field :b_param, class: 'form-control col-sm-6'
-        br
-        = f.submit "Solve", class: 'btn btn-outline-secondary'
 
-      = form_with url: solve_equations_path, class: 'form-quadratic hide', local: true do |f|
-        strong Your equation looks like this: ax<sup>2</sup> + bx + c = 0
+        = f.hidden_field :type, value: "linear"
         .input-group
           .input-group-prepend
             span.input-group-text id="inputGroup-sizing-default" a:
-          = f.text_field :a_param, class: 'form-control col-sm-6'
+          = f.text_field :a_param, class: 'form-control col-sm-6 field'
         .input-group
           .input-group-prepend
             span.input-group-text id="inputGroup-sizing-default" b:
-          = f.text_field :b_param, class: 'form-control col-sm-6'
+          = f.text_field :b_param, class: 'form-control col-sm-6 field'
+        br
+        = f.submit "Solve", class: 'btn btn-outline-info w-100'
+
+      = form_with model: @equation, url: solve_equations_path, method: :get, class: 'form-quadratic hide' do |f|
+        strong Your equation looks like this: ax<sup>2</sup> + bx + c = 0
+
+        = f.hidden_field :type, value: "quadratic"
+        .input-group
+          .input-group-prepend
+            span.input-group-text id="inputGroup-sizing-default" a:
+          = f.text_field :a_param, class: 'form-control col-sm-6 field'
+        .input-group
+          .input-group-prepend
+            span.input-group-text id="inputGroup-sizing-default" b:
+          = f.text_field :b_param, class: 'form-control col-sm-6 field'
         .input-group
           .input-group-prepend
             span.input-group-text id="inputGroup-sizing-default" c:
-          = f.text_field :c_param, class: 'form-control col-sm-6'
+          = f.text_field :c_param, class: 'form-control col-sm-6 field'
         br
-        = f.submit "Solve", class: 'btn btn-outline-secondary'
+        = f.submit "Solve", class: 'btn btn-outline-info w-100'
+      
+    
+    h3.card-header.equation-roots.hide
 
-    .equation-roots.hide
-      h3 
-        | Solve of your equation is: 
-        = show_roots(@equation)
+    .card-footer
+      = link_to "Reset", '#', class: 'btn btn-outline-danger w-100', id: 'reset-btn'
     

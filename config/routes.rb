@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   resources :equations, only: [] do
     collection do
       get :request_form
-      post :solve
-      get :result
+      get :solve
     end
   end
 end

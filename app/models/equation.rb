@@ -1,4 +1,7 @@
-class Equation < ApplicationRecord
+class Equation 
+  include ActiveModel::Validations
+  include ActiveModel::Conversion
+
   attr_reader :a_param, :b_param, :c_param, :type, :result
   
   validates :a_param, :b_param, :c_param, presence: true, numericality: true
@@ -6,6 +9,11 @@ class Equation < ApplicationRecord
   def solve(params)
     parse(params)
     @result = valid? ? Services::EquationSolver.call(self) : nil
+    self
+  end
+
+  def persisted?
+    false
   end
 
   private
