@@ -32,4 +32,5 @@ function clearForms(event) {
   event.preventDefault();
   $('.field').val('');
   $('.equation-roots').html('');
+  $('.params-errors').html('');
 };
