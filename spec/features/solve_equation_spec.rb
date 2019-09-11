@@ -46,7 +46,7 @@ feature 'User can request solution of the equation', %q{
       expect(page).to_not have_content "Root is"
     end
 
-    scenario 'b_param with letters in a linear equation', js: true do
+    scenario 'input b_param with letters in a linear equation', js: true do
       within('.form-linear') do
         fill_in 'equation[a_param]', with: -10
         fill_in 'equation[b_param]', with: 'fr'
@@ -58,7 +58,7 @@ feature 'User can request solution of the equation', %q{
       expect(page).to_not have_content "Root is"
     end
 
-    scenario 'input invalid params for  a quadratic equation', js: true do 
+    scenario 'input invalid params for a quadratic equation', js: true do 
       find('#type-switch').click
       within('.form-quadratic') do
         fill_in 'equation[a_param]', with: 0
@@ -74,7 +74,7 @@ feature 'User can request solution of the equation', %q{
       expect(page).to_not have_content "Root is"
     end
 
-    scenario 'does not get a solution because of problem in remote EqSolver servise', js: true do 
+    scenario 'does not get a solution because of a problem in the remote EqSolver servise', js: true do 
       find('#type-switch').click
       within('.form-quadratic') do
         fill_in 'equation[a_param]', with: 2
