@@ -6,12 +6,15 @@ class Equation
   
   validates :a_param, :b_param, :c_param, numericality: true
   validates :a_param, :type, presence: true
-  validate :validate_a_param_not_zero
-  validate :validate_type
+  validate :validate_a_param_not_zero, :validate_type
 
   def solve(params)
     parse(params)
-    @result = valid? ? Services::EquationSolver.call(self) : nil
+    if valid? 
+      res = Services::EquationSolver.call(self)
+      @result = res['result']
+      @errors.add(:result, res['error']) if res['error']
+    end
     self
   end
 

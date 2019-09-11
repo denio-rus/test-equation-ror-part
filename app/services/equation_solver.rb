@@ -10,6 +10,6 @@ class Services::EquationSolver
   def call
     res = HTTP.post('http://localhost:9292/solve_equation',
                     body: @equation.to_json)
-    JSON.parse(res.body)['result']
+    JSON.parse(res.body)
   end
 end

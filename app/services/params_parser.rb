@@ -12,7 +12,7 @@ class Services::ParamsParser
   def parse(parameter)
     return 0 if parameter.blank?
 
-    return "invalid parameter #{parameter}" unless parameter =~ /^(\+|\-)?\d*(\.)?\d*(\/)?\d*(\.)?\d*$/
+    return "invalid parameter #{parameter}" unless parameter =~ /^(\+|\-)?\d+(\.)?\d*(\/)?\d*(\.)?\d*$/
     
     s = parameter.split('/') 
     return s.first.to_f if s.size == 1
