@@ -37,7 +37,6 @@ gem 'bootstrap', '~>4.1.3'
 gem 'http'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8'
   gem 'rails-controller-testing'
@@ -58,9 +57,8 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers', '~> 3.0'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  # gem 'chromedriver-helper'
   gem 'shoulda-matchers'
+  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
