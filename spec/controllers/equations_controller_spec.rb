@@ -26,5 +26,4 @@ RSpec.describe EquationsController, type: :controller do
       expect(response).to render_template :solve
     end
   end
-
 end

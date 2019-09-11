@@ -10,7 +10,7 @@ class Services::EquationSolver
   end
 
   def call
-    res = HTTP.basic_auth(user: 'master', pass: "mathematics")
+    res = HTTP.basic_auth(user: 'master', pass: 'mathematics')
               .post('http://localhost:9292/solve_equation', body: @equation.to_json)
     
     return ERROR_MESSAGE_HASH if res.status.server_error?
