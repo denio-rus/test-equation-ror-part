@@ -19,7 +19,4 @@ class Services::EquationSolver
   rescue HTTP::ConnectionError => e
     ERROR_MESSAGE_HASH
   end
-  
-  private
-
 end

@@ -2,22 +2,20 @@ class Equation
   include ActiveModel::Validations
   include ActiveModel::Conversion
 
-  attr_reader :a_param, :b_param, :c_param, :type, :result
+  attr_accessor :a_param, :b_param, :c_param, :type, :result
   
-  validates :a_param, presence: true, numericality: true
+  validates :a_param, presence: true, numericality: { other_than: 0 }
   validates :b_param, numericality: true
-  validates :c_param, numericality: true, if: :quadratic?
-  validates :type, presence: true
+  validates :c_param, numericality: true, allow_nil: true
+  validates :type, presence: true, inclusion: { in: [:linear, :quadratic] }
   
-  validate :validate_a_param_not_zero, :validate_type
-
   def solve(params)
     parse(params)
 
     if valid? 
       res = Services::EquationSolver.call(self)
       @result = res['result']
-      @errors.add(:result, res['error']) if res['error']
+      errors.add(:result, res['error']) if res['error']
     end
     
     self
@@ -47,16 +45,5 @@ class Equation
     @a_param = parsed_params[:a]
     @b_param = parsed_params[:b]
     @c_param = parsed_params[:c] if quadratic?
-  end
-
-  def validate_a_param_not_zero
-    return if @a_param != 0
-
-    errors.add(:a_param, "Wrong type of equation. If 'a' is zero, it must be a linear type!") if quadratic?
-    errors.add(:a_param, "Root can be any number, if 'a' is zero") if linear?
-  end
-  
-  def validate_type
-    errors.add(:type, "Wrong title") unless [:linear, :quadratic].include? type
   end
 end
