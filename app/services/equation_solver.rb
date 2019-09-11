@@ -8,8 +8,10 @@ class Services::EquationSolver
   end
 
   def call
-    res = HTTP.post('http://localhost:9292/solve_equation',
-                    body: @equation.to_json)
+    res = HTTP.basic_auth(user: 'master', pass: "mathematics")
+              .post('http://localhost:9292/solve_equation', body: @equation.to_json)
     JSON.parse(res.body)
+  rescue HTTP::ConnectionError => e
+    { 'error' => "Sorry, but our calculator is broken. Try it later." }
   end
 end
