@@ -1,4 +1,6 @@
 class EquationsController < ApplicationController
+  protect_from_forgery except: :solve
+  
   def request_form
     @equation = Equation.new
   end
