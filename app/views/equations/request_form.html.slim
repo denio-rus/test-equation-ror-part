@@ -1,15 +1,15 @@
 .row.justify-content-center
   .card.col-sm-8
     .card-header.text-center
-      h1 Params of an equation
+      h1 Parameters of the equation
     .card-body
       h3 Lets solve your equation.
 
       p 
-        | First step: choose the type of your equation.  
+        | First step: Choose the type of the equation.  
         =link_to 'linear', '#', class: 'btn btn-outline-primary', id: 'type-switch', remote: true
 
-      p Second step: Enter parameters of the equation.
+      p Second step: Enter the parameters of the equation.
 
       = form_with model: @equation, url: solve_equations_path, method: :get, class: 'form-linear' do |f|
         strong Your equation looks like this: ax + b = 0
