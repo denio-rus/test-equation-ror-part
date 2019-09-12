@@ -6,9 +6,7 @@ feature 'User can request solution of the equation', %q{
   I'd like to be able to get solution of the equation'
 } do
   describe 'Guest' do
-    background do
-      visit request_form_equations_path
-    end
+    background { visit request_form_equations_path }
     
     scenario 'solve a linear equation', js: true do
       allow(Services::EquationSolver).to receive(:call).and_return({ 'result' => 5.0 })

@@ -10,7 +10,6 @@ RSpec.describe Equation, type: :model do
 
   let(:params) { { a_param: '1', b_param: '-8', c_param: '12', type: 'quadratic' } }
   let(:equation) { Equation.new }
-  let(:service) { double'Services::EquationSolver'}
 
   it 'solves equation and returns self with roots as result attribute' do
     expect(Services::ParamsParser).to receive(:call).and_call_original
